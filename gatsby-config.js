@@ -9,6 +9,14 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-mdx",
+    "gatsby-transformer-json",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/config/translations`,
+        name: `translations`,
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {

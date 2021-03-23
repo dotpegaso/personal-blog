@@ -1,30 +1,46 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
-import { Layout, SEO } from "../components";
+import { SEO, LocalizedLink } from "../components";
 
-const Home = ({ data }) => {
-  const posts = data.allMdx.nodes;
+const Home = ({ data, pageContext }) => {
+  const posts = data.allMdx;
 
   return (
-    <Layout>
+    <>
       <SEO title="Home Page" />
-      {posts.map((post) => (
-        <Link to={post.slug} key={post.slug}>
-          <h2>{post.frontmatter.title}</h2>
-        </Link>
+      {posts.edges.map(({ node: post }) => (
+        <li key={`${post.frontmatter.title}-${post.fields.locale}`}>
+          <LocalizedLink to={`/${post.parent.relativeDirectory}`}>
+            {post.frontmatter.title}
+          </LocalizedLink>
+          <div>{post.frontmatter.date}</div>
+        </li>
       ))}
-    </Layout>
+    </>
   );
 };
 
 export const pageQuery = graphql`
-  {
-    allMdx(sort: { fields: [frontmatter___title], order: ASC }) {
-      nodes {
-        slug
-        frontmatter {
-          title
+  query Index($locale: String!, $dateFormat: String!) {
+    allMdx(
+      filter: { fields: { locale: { eq: $locale } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            date(formatString: $dateFormat)
+          }
+          fields {
+            locale
+          }
+          parent {
+            ... on File {
+              relativeDirectory
+            }
+          }
         }
       }
     }
