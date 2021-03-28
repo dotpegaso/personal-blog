@@ -35,6 +35,10 @@ export const Body = styled.p`
   font-size: 1.9rem;
   line-height: 1.6;
   color: ${secondaryTextColor};
+
+  @media (max-width: 490px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const Anchor = styled.a`
@@ -46,6 +50,10 @@ export const Anchor = styled.a`
   background-position: center right 2.5px;
 
   :hover {
+    border-bottom: 0.5px solid ${secondaryTextColor};
+  }
+
+  @media (max-width: 490px) {
     border-bottom: 0.5px solid ${secondaryTextColor};
   }
 `;
