@@ -1,11 +1,12 @@
-const _ = require("lodash");
 const path = require(`path`);
 const locales = require(`./config/i18n`);
 const {
   localizedSlug,
   findKey,
   removeTrailingSlash,
-} = require(`./src/utils/gatsby-node-helpers.js`);
+} = require(`./src/utils/gatsby-node-helpers`);
+
+const replacePath = (fpath) => fpath.replace("{replace}", "blog");
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
@@ -44,6 +45,10 @@ exports.onCreatePage = ({ page, actions }) => {
 // It's necessary to do that -- otherwise you couldn't filter by language
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
+
+  if (node.internal.type === `MarkdownRemark`) {
+    node.frontmatter.path = replacePath(node.frontmatter.path);
+  }
 
   // Check for "Mdx" type so that other files (e.g. images) are exluded
   if (node.internal.type === `Mdx`) {
@@ -100,18 +105,18 @@ exports.createPages = async ({ graphql, actions }) => {
     return;
   }
 
-  const postList = result.data.posts.edges;
+  const postList = result.data.posts.edges.filter((edge) => edge.node.childMdx);
 
   postList.forEach(({ node: post }) => {
     // All files for a blogpost are stored in a folder
     // relativeDirectory is the name of the folder
     const slug = post.relativeDirectory;
 
-    const title = _.get(post, "childMdx.frontmatter.title", "");
+    const title = post.childMdx.frontmatter.title;
 
     // Use the fields created in exports.onCreateNode
-    const locale = _.get(post, "childMdx.fields.locale", "");
-    const isDefault = _.get(post, "childMdx.fields.isDefault", false);
+    const locale = post.childMdx.fields.locale;
+    const isDefault = post.childMdx.fields.isDefault;
 
     createPage({
       path: localizedSlug({ isDefault, locale, slug }),
