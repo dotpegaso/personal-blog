@@ -1,10 +1,11 @@
+const _ = require("lodash");
 const path = require(`path`);
 const locales = require(`./config/i18n`);
 const {
   localizedSlug,
   findKey,
   removeTrailingSlash,
-} = require(`./src/utils/gatsby-node-helpers`);
+} = require(`./src/utils/gatsby-node-helpers.js`);
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
@@ -106,11 +107,11 @@ exports.createPages = async ({ graphql, actions }) => {
     // relativeDirectory is the name of the folder
     const slug = post.relativeDirectory;
 
-    const title = post.childMdx.frontmatter.title;
+    const title = _.get(post, "childMdx.frontmatter.title", "");
 
     // Use the fields created in exports.onCreateNode
-    const locale = post.childMdx.fields.locale;
-    const isDefault = post.childMdx.fields.isDefault;
+    const locale = _.get(post, "childMdx.fields.locale", "");
+    const isDefault = _.get(post, "childMdx.fields.isDefault", false);
 
     createPage({
       path: localizedSlug({ isDefault, locale, slug }),

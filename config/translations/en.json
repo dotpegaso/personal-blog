@@ -1,4 +1,9 @@
 {
-  "footer": "Some cool footer!",
-  "home": "Home"
+  "home_seo_title": "Home",
+  "footer_message": "I like to build stuff, this blog is one of them.",
+  "newsletter_placeholder": "Type your best email",
+  "newsletter_button": "Subscribe to newsletter",
+  "newsletter_title": "Stay tuned",
+  "newsletter_description": "Subscribe to stay in the loop by receiving new blogposts!",
+  "newsletter_confirmation": "Done, thanks!"
 }

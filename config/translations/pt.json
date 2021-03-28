@@ -1,4 +1,9 @@
 {
-  "footer": "Um rodapé maneiro!",
-  "home": "Início"
+  "home_seo_title": "Início",
+  "footer_message": "Eu gosto de construir coisas, esse blog é uma delas.",
+  "newsletter_placeholder": "Digite seu melhor email",
+  "newsletter_button": "Assinar newsletter",
+  "newsletter_title": "Fique por dentro",
+  "newsletter_description": "Assine para receber novidades sobre novas publicações!",
+  "newsletter_confirmation": "Feito, valeu demais!"
 }

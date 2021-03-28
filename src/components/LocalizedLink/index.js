@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
-import { LocaleContext } from "./Layout";
-import locales from "../../config/i18n";
+import { LayoutContext } from "../Layout";
+import locales from "../../../config/i18n";
 
 // Use the globally available context to choose the right path
 const LocalizedLink = ({ to, ...props }) => {
-  const { locale } = React.useContext(LocaleContext);
+  const { locale } = useContext(LayoutContext);
 
   const isIndex = to === `/`;
 
@@ -15,7 +15,7 @@ const LocalizedLink = ({ to, ...props }) => {
   // Because otherwise this would add a trailing slash
   const path = locales[locale].default
     ? to
-    : `/${locales[locale].path}${isIndex ? `` : `${to}`}`;
+    : `/${locales[locale].path}/${isIndex ? `` : `${to}`}`;
 
   return <Link {...props} to={path} />;
 };

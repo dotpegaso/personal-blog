@@ -1,24 +1,26 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 
-import { SEO } from "../components";
+import SEO from "../components/SEO";
+import PostContent from "../components/PostContent";
 
-// The normal <a> tag is modified here (so that internal links use gatsby-link/LocalizedLink
-// More info:
-// https://www.gatsbyjs.com/docs/mdx/customizing-components/
+deckDeckGoHighlightElement();
+
 const Post = ({ data: { mdx } }) => (
   <>
     <SEO
       title={mdx.frontmatter.title}
-      description={mdx.frontmatter.description}
-      image=""
+      description={mdx.frontmatter.spoiler}
+      image={mdx.frontmatter.featuredImage.publicURL}
       imageAlt={mdx.frontmatter.imageAlt}
     />
-    <div className="blogpost">
-      <h1>{mdx.frontmatter.title}</h1>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
-    </div>
+    <PostContent
+      title={mdx.frontmatter.title}
+      author={mdx.frontmatter.author}
+      date={mdx.frontmatter.date}
+      body={mdx.body}
+    />
   </>
 );
 
@@ -32,6 +34,12 @@ export const query = graphql`
     ) {
       frontmatter {
         title
+        date
+        author
+        spoiler
+        featuredImage {
+          publicURL
+        }
       }
       body
     }

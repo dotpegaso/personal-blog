@@ -1,28 +1,33 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import { SEO, LocalizedLink } from "../components";
+import SEO from "../components/SEO";
+import Preview from "../components/Preview";
 
-const Home = ({ data, pageContext }) => {
+import { useTranslations } from "../hooks";
+
+const Home = ({ data }) => {
   const posts = data.allMdx;
+  const { home_seo_title } = useTranslations();
 
   return (
     <>
-      <SEO title="Home Page" />
+      <SEO title={home_seo_title} />
       {posts.edges.map(({ node: post }) => (
-        <li key={`${post.frontmatter.title}-${post.fields.locale}`}>
-          <LocalizedLink to={`/${post.parent.relativeDirectory}`}>
-            {post.frontmatter.title}
-          </LocalizedLink>
-          <div>{post.frontmatter.date}</div>
-        </li>
+        <Preview
+          key={post.frontmatter.title}
+          date={post.frontmatter.date}
+          title={post.frontmatter.title}
+          spoiler={post.frontmatter.spoiler}
+          path={post.parent.relativeDirectory}
+        />
       ))}
     </>
   );
 };
 
 export const pageQuery = graphql`
-  query Index($locale: String!, $dateFormat: String!) {
+  query Index($locale: String!) {
     allMdx(
       filter: { fields: { locale: { eq: $locale } } }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -31,7 +36,8 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            date(formatString: $dateFormat)
+            date
+            spoiler
           }
           fields {
             locale

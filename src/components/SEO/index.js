@@ -24,10 +24,31 @@ const SEO = ({ title, description, image, imageAlt, meta = [] }) => {
   return (
     <Helmet
       title={title}
-      htmlAttributes={{
-        lang: `pt-BR`,
-      }}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={[
+        {
+          rel: "apple-touch-icon",
+          sizes: "152x152",
+          href: "/apple-touch-icon.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "32x32",
+          href: "/favicon-32x32.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "16x16",
+          href: "/favicon-16x16.png",
+        },
+        {
+          rel: "mask-icon",
+          href: "/safari-pinned-tab.svg",
+          color: "#5bbad5",
+        },
+      ]}
       meta={[
         { name: `description`, content: metaDescription },
         { property: `og:title`, content: title },

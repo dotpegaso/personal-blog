@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import _ from "lodash";
 import { useStaticQuery, graphql } from "gatsby";
-import { LocaleContext } from "../components/Layout";
+import { LayoutContext } from "../components/Layout";
 
 const useTranslations = () => {
   // Grab the locale (passed through context) from the Context Provider
-  const { locale } = useContext(LocaleContext);
+  const { locale } = useContext(LayoutContext);
   // Query the JSON files in <rootDir>/i18n/translations
   const { rawData } = useStaticQuery(query);
 
@@ -32,8 +32,13 @@ const query = graphql`
         node {
           name
           translations: childTranslationsJson {
-            footer
-            home
+            home_seo_title
+            footer_message
+            newsletter_placeholder
+            newsletter_button
+            newsletter_title
+            newsletter_description
+            newsletter_confirmation
           }
         }
       }
