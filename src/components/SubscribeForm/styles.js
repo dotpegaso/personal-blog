@@ -18,6 +18,14 @@ export const Container = styled.div`
   align-items: center;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 15px;
+
+  @media (max-width: 490px) {
+    padding: 15px;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 20px;
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Disclaimer = styled.div`

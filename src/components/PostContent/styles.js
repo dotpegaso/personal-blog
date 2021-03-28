@@ -13,6 +13,12 @@ export const Container = styled.article`
   height: 100%;
   margin: 60px auto 0;
   text-align: center;
+
+  @media (max-width: 490px) {
+    margin: 40px auto 0;
+    width: 100%;
+    padding: 0 15px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -46,6 +52,10 @@ export const Anchor = styled.a`
 
 export const Paragraph = styled.p`
   margin-bottom: 32px;
+
+  @media (max-width: 490px) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const ShortCode = styled.code`
@@ -65,6 +75,11 @@ export const Strong = styled.strong`
 
 export const OrdernedList = styled.ol`
   margin-left: 20px;
+
+  @media (max-width: 490px) {
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -85,6 +100,10 @@ export const Blockquote = styled.blockquote`
   background: ${highlightColor};
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+
+  @media (max-width: 490px) {
+    margin: 40px auto;
+  }
 
   ${OrdernedList} {
     margin-left: 35px;

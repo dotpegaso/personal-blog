@@ -28,6 +28,28 @@ export const Container = styled.div`
       transform: rotate(20deg);  
     }
     `}
+
+  @media (max-width: 490px) {
+    width: 120px;
+    height: 120px;
+    left: 60vw;
+    margin: auto;
+
+    ${(p) =>
+      p.theme === "day"
+        ? `
+    transform: rotate(180deg);
+    :hover {
+      transform: rotate(180deg);  
+    }
+    `
+        : `
+    transform: rotate(0deg);
+    :hover {
+      transform: rotate(0deg);  
+    }
+    `}
+  }
 `;
 
 export const Day = styled.div`

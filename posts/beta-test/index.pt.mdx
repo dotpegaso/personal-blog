@@ -1,0 +1,38 @@
+---
+title: Teste Beta
+date: 2021-03-27
+spoiler: A melhor maneira de começar a fazer algo é fazer um lance muito legal e longo para testar o limite de caracteres
+author: Andre Benatti
+featuredImage: ./social-card-pt.png
+---
+
+## __Título__
+
+Lorem `ipsum dolor sit amet`, consectetur adipiscing elit. Phasellus venenatis mollis luctus. [Mauris luctus enim](https://twitter.com/dotpegaso) lorem, in consequat urna fermentum in. Praesent non commodo est. In ornare fermentum malesuada.
+
+### __Subtítulo__ 
+Vivamus in augue felis. Quisque a sagittis odio, sed accumsan lorem.
+
+> Morbi bibendum blandit *eros*, in pharetra mauris ultrices sed.
+> Quisque a sagittis odio, sed accumsan lorem. Nam ac sapien est:
+>  1. Donec interdum dolor
+>  2. Rhoncus rutrum erat
+>  3. Etiam pharetra velit eu
+> Morbi __bibendum blandit eros__, in pharetra mauris ultrices sed.
+
+Quisque a sagittis odio, sed accumsan lorem. Nam ac sapien est:
+  1. Donec interdum dolor
+  2. Rhoncus rutrum erat
+  3. Etiam pharetra velit eu
+
+Vivamus in augue felis. Quisque a sagittis odio, sed accumsan lorem.
+
+```jsx{3}
+export default function HumanDate({ date, locale }) {
+  return new Date(date).toLocaleDateString(locale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+```

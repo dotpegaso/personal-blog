@@ -19,6 +19,17 @@ const sharedLinkStyle = css`
   :hover {
     color: var(--constrast);
   }
+
+  @media (max-width: 490px) {
+    font-size: 1.8rem;
+    width: 100%;
+    padding: 0 5px;
+    justify-content: flex-start;
+
+    > svg {
+      margin-right: 5px;
+    }
+  }
 `;
 
 export const Container = styled.div`
@@ -29,6 +40,13 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 50vw;
   justify-content: flex-end;
+
+  @media (max-width: 490px) {
+    grid-column-gap: 0px;
+    width: 100%;
+    grid-template-rows: 80px;
+    grid-template-columns: 150px 1fr;
+  }
 `;
 
 export const StyledLocalizedLink = styled(LocalizedLink)`
