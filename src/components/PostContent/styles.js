@@ -1,13 +1,6 @@
 import styled from "styled-components/macro";
 import iconAnchor from "../../images/icons/anchor.svg";
 
-import {
-  primaryTextColor,
-  secondaryTextColor,
-  inlineCodeBackgroundColor,
-  highlightColor,
-} from "../../styles/theme";
-
 export const Container = styled.article`
   max-width: 675px;
   height: 100%;
@@ -26,7 +19,7 @@ export const Title = styled.h1`
   margin: 10px 0;
   font-family: var(--bold-font);
   transition: 0.2s all ease;
-  color: ${primaryTextColor};
+  color: var(--primary);
 `;
 
 export const Body = styled.p`
@@ -34,7 +27,7 @@ export const Body = styled.p`
   margin-top: 70px;
   font-size: 1.9rem;
   line-height: 1.6;
-  color: ${secondaryTextColor};
+  color: var(--secondary);
 
   @media (max-width: 490px) {
     font-size: 1.7rem;
@@ -42,7 +35,7 @@ export const Body = styled.p`
 `;
 
 export const Anchor = styled.a`
-  color: ${primaryTextColor};
+  color: var(--primary);
   text-decoration: none;
   padding: 0 20px 2px 0;
   background-image: url(${iconAnchor});
@@ -50,11 +43,11 @@ export const Anchor = styled.a`
   background-position: center right 2.5px;
 
   :hover {
-    border-bottom: 0.5px solid ${secondaryTextColor};
+    border-bottom: 0.5px solid var(--secondary);
   }
 
   @media (max-width: 490px) {
-    border-bottom: 0.5px solid ${secondaryTextColor};
+    border-bottom: 0.5px solid var(--secondary);
   }
 `;
 
@@ -67,7 +60,7 @@ export const Paragraph = styled.p`
 `;
 
 export const ShortCode = styled.code`
-  background: ${inlineCodeBackgroundColor};
+  background: var(--code-background);
   border-radius: 2px;
   padding: 2px 6px;
 `;
@@ -78,7 +71,7 @@ export const Emphasis = styled.em`
 `;
 
 export const Strong = styled.strong`
-  color: ${primaryTextColor};
+  color: var(--primary);
 `;
 
 export const OrdernedList = styled.ol`
@@ -105,7 +98,7 @@ export const Blockquote = styled.blockquote`
   border-left: 0.5rem solid;
   border-left-color: inherit;
   opacity: 0.7;
-  background: ${highlightColor};
+  background: var(--highlight);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 

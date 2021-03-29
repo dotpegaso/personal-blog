@@ -32,9 +32,10 @@ const SubscribeForm = () => {
         onSubmit={(e) => {
           handleSubmit(e);
         }}
+        isSubscribed={isSubscribed}
       >
         {isSubscribed ? (
-          <S.Text title>{newsletter_confirmation}</S.Text>
+          <S.Text title>{newsletter_confirmation} 🎉</S.Text>
         ) : (
           <>
             <S.Input

@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components/macro";
-import { highlightColor } from "../../styles/theme";
+
+import Wave from "../../images/wave";
+
+export const StyledWave = styled(Wave).attrs({ fill: "var(--highlight)" })``;
 
 const sharedAlignment = css`
   justify-self: center;
@@ -8,7 +11,7 @@ const sharedAlignment = css`
 export const Container = styled.footer`
   position: relative;
   height: 200px;
-  background: ${highlightColor};
+  background: var(--highlight);
 `;
 
 export const SocialWrapper = styled.div`

@@ -1,38 +1,45 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import PropTypes from "prop-types";
-import { ThemeProvider } from "styled-components";
 
 import GlobalStyles from "../../styles/global";
 
 import Footer from "../Footer";
 import Header from "../Header";
 
-import { getThemeMode } from "../../utils";
-
 import * as S from "./styles";
 
-import "../../styles/typography.css";
-import "../../styles/colors.css";
 import "../../styles/deckdeckgo.css";
 
 export const LayoutContext = createContext();
 
 const Layout = ({ children, pageContext, location }) => {
-  const [theme, setTheme] = useState(getThemeMode());
+  const [theme, setTheme] = useState(undefined);
   const { pathname } = location;
   const { locale } = pageContext;
 
+  const isDarkMode = theme === "dark";
+
+  useEffect(() => {
+    setTheme(window.__theme);
+    window.__onThemeChange = () => setTheme(window.__theme);
+  }, []);
+
   return (
-    <ThemeProvider theme={{ mode: theme }}>
-      <S.Container>
-        <GlobalStyles />
-        <LayoutContext.Provider value={{ locale, theme, setTheme }}>
-          <Header locale={locale} pathname={pathname} />
-          <S.Children>{children}</S.Children>
-          <Footer />
-        </LayoutContext.Provider>
-      </S.Container>
-    </ThemeProvider>
+    <S.Container>
+      <GlobalStyles />
+      <LayoutContext.Provider
+        value={{
+          locale,
+          theme,
+          setTheme: () =>
+            window.__setPreferredTheme(isDarkMode ? "light" : "dark"),
+        }}
+      >
+        <Header locale={locale} pathname={pathname} />
+        <S.Children>{children}</S.Children>
+        <Footer />
+      </LayoutContext.Provider>
+    </S.Container>
   );
 };
 

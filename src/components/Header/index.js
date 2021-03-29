@@ -1,16 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import ThemeWheel from "../ThemeWheel";
-import { LayoutContext } from "../Layout";
-
-import Wings from "../../images/icons/wings";
-import Global from "../../images/icons/global";
 
 import * as S from "./styles";
 
 const Header = ({ locale, pathname }) => {
-  const { theme } = useContext(LayoutContext);
-
   function getLocalePath() {
     return (
       {
@@ -20,24 +14,17 @@ const Header = ({ locale, pathname }) => {
     );
   }
 
-  function getFillColorByTheme() {
-    return {
-      day: "#000",
-      night: "#FFF",
-    }[theme];
-  }
-
   return (
     <S.Container as="header">
       <ThemeWheel />
 
       <S.StyledLocalizedLink to="/">
-        <Wings fill={getFillColorByTheme()} />
+        <S.StyledWings />
         dotpegaso
       </S.StyledLocalizedLink>
 
       <S.StyledLink hrefLang={locale} to={getLocalePath()}>
-        <Global fill={getFillColorByTheme()} />
+        <S.StyledGlobal />
         {locale}
       </S.StyledLink>
     </S.Container>

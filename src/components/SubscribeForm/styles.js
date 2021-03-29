@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components/macro";
-import { highlightColor, backgroundColor } from "../../styles/theme";
 
 const sharedGridOptions = css`
   display: grid;
@@ -13,7 +12,7 @@ export const Container = styled.div`
   margin: 50px 0 0;
   padding: 40px;
   border-radius: 20px;
-  background: ${highlightColor};
+  background: var(--highlight);
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
@@ -38,6 +37,12 @@ export const Form = styled.form`
   ${sharedGridOptions}
   text-align: left;
   grid-row-gap: 20px;
+
+  ${(p) =>
+    p.isSubscribed &&
+    `
+    grid-template-rows: 1fr;
+  `}
 `;
 
 export const Text = styled.p`
@@ -57,7 +62,7 @@ export const Submit = styled.button`
   border: none;
   font-family: var(--bold-font);
   font-size: 1.8rem;
-  color: ${backgroundColor};
+  color: var(--background);
   transition: 0.2s all ease;
   height: 42px;
 

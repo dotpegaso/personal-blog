@@ -2,7 +2,16 @@ import styled, { css } from "styled-components/macro";
 import { Link } from "gatsby";
 import LocalizedLink from "../LocalizedLink";
 
-import { primaryTextColor } from "../../styles/theme";
+import Global from "../../images/icons/global";
+import Wings from "../../images/icons/wings";
+
+export const StyledGlobal = styled(Global).attrs({
+  fill: "var(--primary)",
+})``;
+
+export const StyledWings = styled(Wings).attrs({
+  fill: "var(--primary)",
+})``;
 
 const sharedLinkStyle = css`
   display: flex;
@@ -14,7 +23,7 @@ const sharedLinkStyle = css`
   font-family: var(--bold-font);
   gap: 10px;
   width: 200px;
-  color: ${primaryTextColor};
+  color: var(--primary);
 
   :hover {
     color: var(--constrast);

@@ -5,17 +5,10 @@ import { LayoutContext } from "../Layout";
 import * as S from "./styles";
 
 const ThemeWheel = () => {
-  const { theme, setTheme } = useContext(LayoutContext);
-
-  function handleSetTheme() {
-    return {
-      day: "night",
-      night: "day",
-    }[theme];
-  }
+  const { setTheme } = useContext(LayoutContext);
 
   return (
-    <S.Container onClick={() => setTheme(handleSetTheme)} theme={theme}>
+    <S.Container onClick={setTheme}>
       <S.Day />
       <S.Night />
     </S.Container>

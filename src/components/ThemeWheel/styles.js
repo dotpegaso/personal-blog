@@ -11,44 +11,15 @@ export const Container = styled.div`
   right: 0;
   margin: 0 auto;
   top: -70px;
-  transition: 0.7s all ease;
+  transition: 0.3s all ease;
   cursor: pointer;
-
-  ${(p) =>
-    p.theme === "day"
-      ? `
-    transform: rotate(180deg);
-    :hover {
-      transform: rotate(160deg);  
-    }
-    `
-      : `
-    transform: rotate(0deg);
-    :hover {
-      transform: rotate(20deg);  
-    }
-    `}
+  transform: var(--theme-wheel-transform);
 
   @media (max-width: 490px) {
     width: 120px;
     height: 120px;
     left: 60vw;
     margin: auto;
-
-    ${(p) =>
-      p.theme === "day"
-        ? `
-    transform: rotate(180deg);
-    :hover {
-      transform: rotate(180deg);  
-    }
-    `
-        : `
-    transform: rotate(0deg);
-    :hover {
-      transform: rotate(0deg);  
-    }
-    `}
   }
 `;
 
@@ -56,12 +27,12 @@ export const Day = styled.div`
   height: 50%;
   border-top-left-radius: 100px;
   border-top-right-radius: 100px;
-  background: var(--day-highlight) url(${iconSun}) center no-repeat;
+  background: var(--highlight) url(${iconSun}) center no-repeat;
 `;
 
 export const Night = styled.div`
   height: 50%;
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
-  background: var(--night-highlight) url(${iconMoon}) center no-repeat;
+  background: var(--highlight) url(${iconMoon}) center no-repeat;
 `;
