@@ -8,6 +8,7 @@ import Header from "../Header";
 
 import * as S from "./styles";
 
+import "../../styles/typography.css";
 import "../../styles/deckdeckgo.css";
 
 export const LayoutContext = createContext();

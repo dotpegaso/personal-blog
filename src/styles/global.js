@@ -1,23 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = createGlobalStyle`
-  @font-face {
-    font-family: "HKGrotesk-Regular";
-    src: local('HKGrotesk-Regular'), url("../fonts/HKGrotesk-Regular.woff2") format("woff2");
-    font-weight: normal;
-  }
-
-  @font-face {
-    font-family: "HKGrotesk-Bold";
-    src: local('HKGrotesk-Bold'), url("../fonts/HKGrotesk-Bold.woff2") format("woff2");
-    font-weight: bold;
-  }
-  
+const GlobalStyles = createGlobalStyle` 
   :root {  
     --constrast: #FF67ED;  
     --button-hover: #ff86f1;
-    --regular-font: HKGrotesk-Regular, sans-serif;
-    --bold-font: HKGrotesk-Bold, sans-serif;
   }
 
   * {
