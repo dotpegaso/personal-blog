@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 
 import { humanDate } from "../../utils";
 import { LayoutContext } from "../Layout";
@@ -12,6 +13,8 @@ import * as S from "./styles";
 
 const PostContent = ({ title, body, author, date }) => {
   const { locale } = useContext(LayoutContext);
+
+  deckDeckGoHighlightElement();
 
   return (
     <S.Container>

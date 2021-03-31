@@ -1,11 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 
 import SEO from "../components/SEO";
 import PostContent from "../components/PostContent";
-
-deckDeckGoHighlightElement();
 
 const Post = ({ data: { mdx } }) => (
   <>
