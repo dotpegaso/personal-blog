@@ -1,0 +1,99 @@
+---
+title: Mensagens de commit na régua
+date: 2021-03-31
+spoiler: Mudanças de pensamento que entregam commits mais interessantes
+author: Andre Benatti
+featuredImage: ./social-card-pt.png
+---
+
+Sabe aqueles commits bagunçados, sem padrão algum e muitas vezes sem corpo de descrição, contendo apenas o título? Caso não, dê uma olhada nos [primeiros commits do meu blog](https://github.com/dotpegaso/personal-blog/commits/master) (até 29/03/2021) para entender bem sobre o que eu estou falando.
+
+Realizei os commits iniciais dessa maneira de propósito, para poder ilustrar essa discussão sobre a importância de commits bem estruturados, e como algumas pequenas mudanças de pensamento podem beneficiar o projeto da sua equipe.
+
+> 🔬 **Pesquisa sobre o tema:**  
+> Questionei algumas pessoas próximas sobre padrões de mensagens
+> de commit elas costumavam usar em suas empresas e, por exceção de duas,
+> todas as outras respostas diziam que __não há um padrão__.
+
+Quando falamos sobre a descrição de um commit, falamos sobre facilitar manutenções futuras. Se *manutenibilidade* é um tópico importante para a sua equipe, você não deveria deixar um commit bem estruturado fora disso.
+
+Acredito também que, pessoas que pouco se importam com um commit bem estruturado, são pessoas que pouco utilizam comandos como `git log`, `git rebase` e afins. Mas quando lidamos com um projeto grande, é importante tomarmos nota de que o git também pode servir como ferramenta de documentação, e que um commit bem estruturado pode trazer muitos frutos positivos para toda a equipe.
+
+## __Duas peças de ouro sobre commits__
+
+É comum seguirmos algumas pequenas regras, como a adição de um `hash` referenciando algum ticket no título, ou até mesmo o [padrão Karma](https://karma-runner.github.io/0.10/dev/git-commit-msg.html) para atribuir escopos. As dicas abaixo mudaram completamente meu pensamento sobre como entregar commits bem estruturados:  
+
+### __1. Descreva títulos em modo imperativo__
+O próprio git possui padrão imperativo de mensagens, tome o uso de `git revert` ou `git merge` como exemplos. Recomenda-se então que esse padrão seja mantido, de modo que facilite a leitura do `git log` também.  
+
+Um caminho fácil para seguir essa regra é sempre pensar na seguinte frase antes de determinar um título:  
+
+"Ao ser aprovado, esse commit <__mensagem do título__>"
+
+Exemplos:
+  - Ao ser aprovado, esse commit __atualiza componentes do header__
+  - Ao ser aprovado, esse commit __adiciona o componente rodapé__   
+
+<br />  
+
+  
+### __2. Explique o porquê, não o "como"__
+
+Assim como bons códigos são auto-explicativos, um bom commit também deve ser. Procure *contar histórias* sobre o motivo do commit existir ao invés de apenas pontuar aquilo que você fez, por exemplo:
+
+Evite trilhar esse caminho:
+
+```language=git
+# título
+atualização do header  
+# descrição
+- novas cores para os ícones  
+- novo botão adicionado  
+```  
+<br />  
+
+Procure fazer dessa maneira:
+```language=git
+# título
+feat(header): Atualiza componentes do header  
+# descrição
+Novas cores adicionadas aos ícones
+para corrigir o contraste apresentado
+por conta do novo dark mode
+
+Novo botão adicionado para gerenciar
+o tema escolhido pelo usuário
+#adicione referências de `issue tracker` no final
+Resolve: #321
+Veja também: #213, #132
+```
+<br />
+
+
+- `feat` seguindo o [padrão Karma](https://karma-runner.github.io/0.10/dev/git-commit-msg.html)
+- `(header)` é o escopo sobre a área do projeto que está sendo referenciada
+- Título apresentado em modo imperativo
+- Descrição bem detalhada sobre o motivo do commit existir
+- Caso use algum [`issue tracker`](https://help.clubhouse.io/hc/en-us/articles/207540323-Using-Branches-and-Pull-Requests-with-the-Clubhouse-VCS-Integrations), adicione as referências ao final  
+
+> ✨ __Detalhes e mais detalhes__  
+> Além do Karma, outra especificação bem interessante também
+> é apresentada no [Conventional Commits](https://www.conventionalcommits.org), vale a pena conferir! 
+
+## __Mais boas práticas__
+
+Quando se fala sobre commits bem estruturados, é comum encontrarmos também as seguintes regras adicionais:
+
+1. Título sempre em maiúsculo
+2. Não coloque ponto final no título
+3. Pule uma linha para separar o título da descrição
+4. Até 50 caracteres no título
+5. Até 72 caracteres por linha na descrição
+
+<br />
+
+Que, em conjunto com as duas apresentadas anteriormente, forma as famosas ["7 regras para ótimas mensagens de commit"](https://bit.ly/3u4uGTe).
+
+Caso você esteja em um ambiente sem regras sobre commits, procure levantar toda essa reflexão com a sua equipe de desenvolvimento. Você pode até mesmo se destacar apenas por oferecer uma visão organizacional sobre algo que a maioria ignora.
+
+Valeu demais! 👋🏾

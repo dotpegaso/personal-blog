@@ -1,0 +1,96 @@
+---
+title: Commit messages Happy Path
+date: 2021-03-31
+spoiler: How I learned about the properly way to think and write commit messages 
+author: Andre Benatti
+featuredImage: ./social-card.png
+---
+
+Think about those messy commits, without any pattern nor any body description, that you have certainly encountered at some point of your career. To give you a better example over what I'm talking about, [take a look at some of the initial commits from my blog](https://github.com/dotpegaso/personal-blog/commits/master) (until March 29th, 2021).
+
+I made those commits that way on purpose, to illustrate this whole discussion about __how well-made commit messages matter__, and how it can improve the project that you are working along with your team.
+
+> 🔬 **Some research were made**  
+> I asked some friends about what kind of 
+> commit message pattern they use with the
+> project they are currently working with.
+> All but two answers were "__there's no pattern at all__".
+
+When we talk about commit descriptions, we mean easier *maintainability*. If this kind of topic is relevant in any kind of way for your team, you shouldn't leave a good commit message out of it.
+
+I also believe that people who don't care about well made commit messages are the same people who don't use commands like `git log` and `git rebase` that much. But is good to know that git can also be a documentation tool, and by that, a good commit really improves it's efficiency.
+
+## __Two pieces of gold about commits__
+
+It's common to follow up some rules when building a commit, like the addition of some `hash` that refers to some issue tracker or even the usage of [Karma pattern](https://karma-runner.github.io/0.10/dev/git-commit-msg.html) to better organize scope. Those next tips changed completely my perspective about how to delivery reliable commits:  
+
+### __1. Use imperative mode over titles__ ###
+All git features already uses imperative messages, like `git revert` or `git merge` for example, so it's good to keep that in mind. This also will benefit the `git log` command.
+
+A simple reminder to always track that rule is to think about the following sentence, whenever a title should be built:  
+
+"When applied, this commit will <__title message__>"  
+
+For example:  
+  - When applied, this commit will __update header components__
+  - When applied, this commit will __add footer component__  
+
+<br />
+
+### __2. Follow the "why", forget about the "how"__  
+
+Good codebases are very self-explained, good commits should be as well. Try to *tell stories* with your commit descriptions instead of just point out the thing that you did, for example:  
+
+Don't follow this path:
+
+```language=git
+# title
+update header
+# description
+- new colors for icons
+- add new button
+```
+<br />
+
+Go with this, instead:
+```language=git
+# title
+feat(header): update header components
+# description
+Update icon colors due to a bad contrast
+with the new dark mode background
+
+Add a toggle to handle the theme
+selected by the user
+# add references for issue trackers at the entender
+Resolves: #321
+See also: #213, #132
+```
+<br />
+
+- `feat` follows the [Karma pattern](https://karma-runner.github.io/0.10/dev/git-commit-msg.html)  
+- `(header)` is the scope of what is being the topic of this commit  
+- Imperative title is presented
+- There's a good explained description
+- If there's any [`issue tracker`](https://help.clubhouse.io/hc/en-us/articles/207540323-Using-Branches-and-Pull-Requests-with-the-Clubhouse-VCS-Integrations) integrated to the project, refer to it at the end  
+
+> ✨ __A little bit more details__  
+> Besides Karma, there's also another good specs resource, presented at [Conventional Commits](https://www.conventionalcommits.org), it's worth to take a look!  
+
+## More good pratices
+
+It's common to also find those additional rules whenever we have well-made commits as a subject:
+
+1. Capitalize the title
+2. Don't use period at the end of the title
+3. Jump one line between the title and description
+4. Limit the title to 50 characters
+5. Limit the description to 72 characters per line
+
+<br />
+
+In addition to the last two tips presented before, we get the famous ["7 rules of a great commit message"](https://bit.ly/3u4uGTe), yay!  
+
+If your current team doesn't care about all that jazz, bring that up for them! It's something that can be good for everybody.
+
+See you next time! 👋🏾
