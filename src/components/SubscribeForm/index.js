@@ -20,7 +20,7 @@ const SubscribeForm = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const data = { email };
+    const data = { email_address: email };
     const config = {
       headers: {
         Accept: "application/json",
