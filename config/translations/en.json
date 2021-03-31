@@ -5,5 +5,6 @@
   "newsletter_button": "Subscribe to newsletter",
   "newsletter_title": "Stay tuned",
   "newsletter_description": "Subscribe to stay in the loop by receiving new blogposts!",
-  "newsletter_confirmation": "Done, thanks!"
+  "newsletter_confirmation_title": "Done, thanks!",
+  "newsletter_confirmation_description": "Please, check your email to confirm your subscription"
 }

@@ -14,7 +14,8 @@ const SubscribeForm = () => {
     newsletter_button,
     newsletter_title,
     newsletter_description,
-    newsletter_confirmation,
+    newsletter_confirmation_title,
+    newsletter_confirmation_description,
   } = useTranslations();
 
   function handleSubmit(e) {
@@ -48,7 +49,10 @@ const SubscribeForm = () => {
         isSubscribed={isSubscribed}
       >
         {isSubscribed ? (
-          <S.Text title>{newsletter_confirmation} 🎉</S.Text>
+          <S.Disclaimer>
+            <S.Text title>{newsletter_confirmation_title} 🎉</S.Text>
+            <S.Text>{newsletter_confirmation_description}</S.Text>
+          </S.Disclaimer>
         ) : (
           <>
             <S.Input

@@ -38,7 +38,8 @@ const query = graphql`
             newsletter_button
             newsletter_title
             newsletter_description
-            newsletter_confirmation
+            newsletter_confirmation_title
+            newsletter_confirmation_description
           }
         }
       }
