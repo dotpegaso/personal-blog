@@ -14,6 +14,7 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-json",
+    "babel-plugin-styled-components",
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
