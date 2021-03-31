@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import addToMailchimp from "gatsby-plugin-mailchimp";
+import axios from "axios";
 
 import { useTranslations } from "../../hooks";
 
@@ -19,7 +19,20 @@ const SubscribeForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    addToMailchimp(email).then(() => setIsSubscribed(true));
+
+    const data = { email };
+    const config = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+
+    axios
+      .post(process.env.MAILCHIMP_ENDPOINT, data, config)
+      .then(() => setIsSubscribed(true))
+      .catch((error) => console.log("subscription error", error));
   }
 
   return (
