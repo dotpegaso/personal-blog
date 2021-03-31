@@ -13,7 +13,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-twitter",
     "gatsby-transformer-json",
     {
       resolve: `gatsby-plugin-mdx`,
