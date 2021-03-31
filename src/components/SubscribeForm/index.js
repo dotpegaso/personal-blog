@@ -30,7 +30,7 @@ const SubscribeForm = () => {
     };
 
     axios
-      .post(process.env.MAILCHIMP_ENDPOINT, data, config)
+      .post(process.env.GATSBY_MAILCHIMP_ENDPOINT, data, config)
       .then(() => setIsSubscribed(true))
       .catch((error) => console.log("subscription error", error));
   }
