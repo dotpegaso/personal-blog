@@ -27,6 +27,7 @@ const PostContent = ({ title, body, author, date }) => {
           blockquote: (props) => <S.Blockquote {...props} />,
           em: (props) => <S.Emphasis {...props} />,
           ol: (props) => <S.OrdernedList {...props} />,
+          ul: (props) => <S.UnorderedList {...props} />,
           li: (props) => <S.ListItem {...props} />,
         }}
       >

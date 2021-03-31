@@ -1,5 +1,14 @@
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import iconAnchor from "../../images/icons/anchor.svg";
+
+const listStyle = css`
+  margin-left: 20px;
+
+  @media (max-width: 490px) {
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+`;
 
 export const Container = styled.article`
   max-width: 675px;
@@ -74,13 +83,12 @@ export const Strong = styled.strong`
   color: var(--primary);
 `;
 
-export const OrdernedList = styled.ol`
-  margin-left: 20px;
+export const UnorderedList = styled.ul`
+  ${listStyle}
+`;
 
-  @media (max-width: 490px) {
-    margin-left: 30px;
-    margin-bottom: 20px;
-  }
+export const OrdernedList = styled.ol`
+  ${listStyle}
 `;
 
 export const ListItem = styled.li`
