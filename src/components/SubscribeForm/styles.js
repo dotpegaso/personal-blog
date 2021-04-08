@@ -77,6 +77,6 @@ export const Input = styled.input`
   border-radius: 6px;
   padding: 0 15px;
   border: none;
-  background: #fff;
+  background: hsl(0 0% 100%);
   font-size: 1.6rem;
 `;

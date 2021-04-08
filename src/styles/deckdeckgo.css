@@ -3,9 +3,9 @@
   --deckgo-highlight-code-carbon-box-shadow: none;
   --deckgo-highlight-code-padding: 0 0 0 16px;
   --deckgo-highlight-code-carbon-margin: 20px 0;
-  --deckgo-highlight-code-line-background: #1a1c25;
-  --deckgo-highlight-code-token-comment: #54596b;
-  --deckgo-highlight-code-color: #cfcfcf;
-  --deckgo-highlight-code-token-property: #cfcfcf;
-  --deckgo-highlight-code-token-selector: #98c279;
+  --deckgo-highlight-code-line-background: hsl(229 17% 12%);
+  --deckgo-highlight-code-token-comment: hsl(227 12% 37%);
+  --deckgo-highlight-code-color: hsl(0 0% 80%);
+  --deckgo-highlight-code-token-property: hsl(0 0% 80%);
+  --deckgo-highlight-code-token-selector: hsl(95 37% 62%);
 }

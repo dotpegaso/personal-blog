@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle` 
   :root {  
-    --constrast: #FF67ED;  
-    --button-hover: #ff86f1;
+    --constrast: hsl(307 100% 70%);
+    --button-hover: hsl(307 100% 75%);
   }
 
   * {
@@ -25,20 +25,20 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body.dark {
-    --background: #101021;
-    --highlight: #000;
-    --code-background: #252525;
-    --primary: #ECECEC;
-    --secondary: #b9b9b9;
+    --background: hsl(240 35% 10%);
+    --highlight: hsl(0 0% 0%);
+    --code-background: hsl(0 0% 15%);
+    --primary: hsl(0 0% 95%);
+    --secondary: hsl(0 0% 75%);
     --theme-wheel-transform: rotate(0deg);
   }
   
   body.light {
-    --background: #fffdf6;
-    --highlight: #f3f4f5;
-    --code-background: #f1f1f1;
-    --primary: #333;
-    --secondary: #666;
+    --background: hsl(47 100% 98%);
+    --highlight: hsl(210, 0%, 95%);
+    --code-background: hsl(0 0% 95%);
+    --primary: hsl(0 0% 20%);
+    --secondary: hsl(0 0% 40%);
     --theme-wheel-transform: rotate(180deg);
   }
 `;

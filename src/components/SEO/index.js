@@ -46,7 +46,7 @@ const SEO = ({ title, description, image, imageAlt, meta = [] }) => {
         {
           rel: "mask-icon",
           href: "/safari-pinned-tab.svg",
-          color: "#5bbad5",
+          color: "hsl(193 59% 60%)",
         },
       ]}
       meta={[
