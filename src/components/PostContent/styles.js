@@ -100,8 +100,12 @@ export const ListItem = styled.li`
   }
 `;
 
+export const Header2 = styled.h2`
+  margin-bottom: 30px;
+`;
+
 export const Blockquote = styled.blockquote`
-  margin: 40px 1.75rem 40px -1.75rem;
+  margin: 40px auto;
   padding: 20px 1.5rem 20px 1.5rem;
   border-left: 0.5rem solid;
   border-left-color: inherit;
@@ -110,15 +114,19 @@ export const Blockquote = styled.blockquote`
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 
-  @media (max-width: 490px) {
-    margin: 40px auto;
-  }
-
   ${OrdernedList} {
     margin-left: 35px;
   }
 
   ${Strong} {
     font-family: var(--bold-font);
+  }
+
+  ${Paragraph} {
+    margin-bottom: 18px;
+
+    :last-of-type {
+      margin-bottom: 0;
+    }
   }
 `;

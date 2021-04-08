@@ -29,6 +29,7 @@ const PostContent = ({ title, body, author, date }) => {
           ol: (props) => <S.OrdernedList {...props} />,
           ul: (props) => <S.UnorderedList {...props} />,
           li: (props) => <S.ListItem {...props} />,
+          h2: (props) => <S.Header2 {...props} />,
         }}
       >
         <Timestamp dateTime={date}>{`${humanDate({
