@@ -10,7 +10,7 @@ const Post = ({ data: { mdx } }) => (
       title={mdx.frontmatter.title}
       description={mdx.frontmatter.spoiler}
       image={mdx.frontmatter.featuredImage.publicURL}
-      imageAlt={mdx.frontmatter.imageAlt}
+      imageAlt={mdx.frontmatter.spoiler}
     />
     <PostContent
       title={mdx.frontmatter.title}

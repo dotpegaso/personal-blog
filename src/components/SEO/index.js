@@ -57,7 +57,7 @@ const SEO = ({ title, description, image, imageAlt, meta = [] }) => {
         { property: `twitter:title`, content: title },
         { property: `twitter:description`, content: metaDescription },
         {
-          property: `twitter:creater`,
+          property: `twitter:creator`,
           content: site.siteMetadata.twitter || ``,
         },
         { property: `twitter:card`, content: "summary" },
@@ -65,7 +65,7 @@ const SEO = ({ title, description, image, imageAlt, meta = [] }) => {
         .concat(
           image
             ? [
-                { name: "og:image", content: imageUrl },
+                { name: "og:image", content: `${imageUrl}` },
                 { name: "og:image:alt", content: imageAlt || title },
                 { name: "twitter:image", content: imageUrl },
                 { name: "twitter:image:alt", content: imageAlt || title },
