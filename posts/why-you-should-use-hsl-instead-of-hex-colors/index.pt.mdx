@@ -1,0 +1,70 @@
+---
+title: Porquê utilizar HSL ao invés de cores hexadecimais
+date: 2021-04-10
+spoiler: Um guia rápido sobre o funcionamento de cores em HSL e seus benefícios
+author: Andre Benatti
+featuredImage: ./social-card-pt.png
+---
+
+Você sabe dizer, de cabeça, qual cor o HEX `#A200FF` representa? E que tal `rgba(0, 255, 39)`? E se por efeito *:hover*, esse botão recebesse um tom mais escuro desse mesmo HEX, qual valor utilizar para atribuir esse tom adicional?  
+
+Agora imagine esse mesmo botão recebendo a prop *:disabled* por alguma condicional externa, exigindo uma atribuição de transparência, como você executaria isso? Convertendo o __HEX__ em __RGBa__ para poder brincar com sua opacidade? Então vamos falar um pouco sobre HSL, pode ser que você passe a evitar trabalhar com cores em HEX daqui em diante.  
+
+## __HEX e RGB não são modelos de cores intuitivos__  
+
+Respondendo algumas das perguntas acima, `#A200FF` representa um tom de roxo, já `rgba(0, 255, 39)` representa um tom de verde. Para atingir um tom mais claro sobre o tom de roxo, você pode utilizar `#CA6EFF`, ou até mesmo `#DDA1FF`, assim como também pode utilizar `#5A008C` para tons mais escuros de roxo.  
+
+Mas quando falamos sobre tons mais claros ou mais escuros, de uma maneira simples, falamos sobre aumentar ou reduzir a luz sobre uma determinada cor. Sendo assim, para representar essa mudança simples em __HEX__ ou __RGB__, precisamos mudar __todos os valores apresentados__, como se estivéssemos descrevendo uma nova cor.  
+
+Não há uma relação clara entre `#A200FF`, `#DDA1FF` e `#5A008C`. Sem nenhum contexto prévio, é praticamente impossível determinar que esses códigos são diferentes tons de uma mesma cor.
+
+> 🧠 __Quer aprender a converter HEX em RGB de cabeça? Eu te explico__  
+>
+> Um hexadecimal usa até 16 símbolos, sendo 0-9 e A-F (para representar 10-15). Com dois hexadecimais, você consegue representar 256 valores, pois eles trabalham de forma exponencial (16 * 16).  
+>
+> RGB é a sigla para *Red*, *Green*, *Blue*, que aceitam valores entre 0 e 255.  
+>
+> Para transformar um HEX em RGB, basta separar três duplas de um HEX e passar cada uma pela fórmula de *(x\*16 + y\*1)*, sendo __x__ o primeiro e __y__ o segundo valor de cada dupla. Por exemplo:  
+>
+> #DDA1FF  
+> = [ *DD*, *A1*, *FF* ]  
+> = [ (*13* \*16 + *13* \*1), (*10* \*16 + *1* \*1), (*15* \*16 + *15* \*1) ]  
+> = [ 221, 161, 255 ]  
+> rgb(221, 161, 255)  
+>
+> Pronto, tá convertido!
+
+## __Contemple o modelo HSL__
+
+HSL é sigla para *Hue*, *Saturação* e *Luminosidade*, um modelo feito para ser extremamente mais intuitivo que RGB ou HEX. Você pode usar esse modelo em seu CSS da seguinte maneira:  
+
+`hsl(hue saturação% luminosidade%)`  
+
+Além dessas três propriedades, também temos a quarta propriedade, secreta, chamada *Alpha*, que se encarrega em lidar com a opacidade.
+
+*Hue* é o componente que seleciona a "tinta" que será usada, a posição angular de uma roda de cores que é definida entre 0 a 359. *Saturação* é a intensidade dessa cor selecionada, podendo ir de 0% a 100%. Quanto maior o valor da saturação, mais vívida a cor será representada, e vice-versa. *Luminosidade*, como o próprio nome se refere, é o brilho que a cor selecionada carrega, também podendo ir de 0% a 100%.  
+
+Logo, usando o modelo __HSL__, você apenas deve se preocupar em saber qual tinta usar no valor de *Hue*, já que sua saturação e luminosidade serão definidas logo em seguida, como por exemplo:  
+
+- O *hue* para o tom de roxo apresentado (#A200FF) é __278__
+- Um botão roxo em HSL: `background-color: hsl(278 100% 50%);`
+- Para deixar esse botão menos saturado, basta diminuir o valor da sua *saturação*: `background-color: hsl(278 50% 50%);`
+- Para deixar esse botão mais escuro, basta diminuir o valor da sua *luminosidade*: `background-color: hsl(278 100% 35%);`
+- Para deixar esse botão opaco, basta adicionar a quarta propriedade do HSL: `background-color: hsl(278 50% 100% / 0.5);`  
+
+<br />
+
+Perceba o quão mais legível o seu código pode se tornar com o uso de HSL, já que uma vez definida a propriedade de *Hue*, as seguintes são explicitamente aplicadas sobre ela.
+
+> 💾 __Se o seu projeto ainda oferece suporte para IE9, use HSLa__
+>
+> O uso de HSL é compátivel com a maioria dos navegadores hoje em dia, exceto pelo não-tão-querido IE9.
+> Para ele, é indicado o uso do HSLa, que segue a seguinte sintaxe:  
+>
+>`background-color: hsla(278, 100%, 50%, 0.5)`.  
+>
+> De resto, funciona da mesma forma que o HSL, seguindo a mesma ordem de valores.
+
+A partir daqui, magias como [temas dinâmicos com calc() e HSL](https://css-tricks.com/creating-color-themes-with-custom-properties-hsl-and-a-little-calc/) e [mudar a cor de um texto de acordo com a cor de fundo](https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/) são totalmente viáveis de aprender a aplicar.  
+
+Valeu demais! 👋🏾

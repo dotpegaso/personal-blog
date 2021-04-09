@@ -1,0 +1,71 @@
+---
+title: Why you should use HSL instead of HEX colors
+date: 2021-04-10
+spoiler: A quick guide over how HSL works and the many benefits of it 
+author: Andre Benatti
+featuredImage: ./social-card.png
+---
+
+Can you tell, from the top of your head, which color is `#A200FF`? What about `rgba(0, 255, 39)`? If a button would receive a darker tone of this first HEX with some *:hover* effect, which HEX would you provide to reach that tone?  
+
+Now imagine that same button receiving a prop called *:disabled* by any external condition and being turned opaque because of that, how to apply something like that? By transforming the __HEX__ into some __RGBa__ in order to use it's transparency hability? So let's talk about HSL, it's gonna be a blast for you.  
+
+## __HEX and RGB aren't intuitive at all__  
+
+Answering some of questions above, `#A200FF` stands for some purple tone, while `rgba(0, 255, 39)` is a clear green. To reach a brighter purple, you can use `#CA6EFF`, or even `#DDA1FF`. You can also use `#5A008C` to get a darker tone for that same purple.  
+
+But shouldn't be easier? I mean, we're just talking about light getting in and out over a color when it comes to have it brighter or darker tone. But to get things done with both __HEX__ and __RGB__ we need to update __all the values in there__, getting a totally new code just in order to change the color brightness.
+
+There's no clear relationship between `#A200FF`, `#DDA1FF` and `#5A008C`. Without any previous context, it's near impossible to say that they're just different tones of the same color.  
+
+> 🧠 __Do you want to learn how to transform HEX in RBG? Follow me__  
+>
+> HEX uses up to 16 symbols, from 0-9 up to A-F (which represents 10-15). With two HEXes you can reach 256 values, because they work exponentially (16 * 16).  
+>
+> RGB stands for *Red*, *Green*, *Blue*, and can hold up values from 0 to 255.  
+>
+> To get a RGB from HEX you just need to split the HEX in three couples, and then apply the following formula on each of them: *(x\*16 + y\*1)*, where __x__ is the first and __y__ is the second value. For example:  
+>
+>
+> #DDA1FF  
+> = [ *DD*, *A1*, *FF* ]  
+> = [ (*13* \*16 + *13* \*1), (*10* \*16 + *1* \*1), (*15* \*16 + *15* \*1) ]  
+> = [ 221, 161, 255 ]  
+> rgb(221, 161, 255)  
+>
+> Yay, it's done!
+
+## __BEHOLD: The HSL color model__  
+
+HSL stands for *Hue*, *Saturation*, *Light*, a model that's way more intuitive than RGB or HEX. And you can use this model within your CSS following this syntax:  
+
+`hsl(hue saturation% light%)`  
+
+Beyond those three properties, there's also a fourth, the secret one called *Alpha*, which is used to handle transparency.
+
+*Hue* is like the color wheel, the color itself on it's angular position, which can receives values from 0 to 359. *Saturation* is how much intense the color is presented, can hold values from 0% to 100%. *Light*, like the name suggests, is how much brightness the color will receive, and it also hold values from 0% to 100%.
+
+So, following the __HSL__ model, you just need to worry about the *Hue*, because both *Saturation* and *Light* would be applied directly over it. For example:  
+
+- The *hue* value from that previous purple HEX (#A200FF), is __278__
+- A purple HSL background: `background-color: hsl(278 100% 50%);`
+- In order to make it less intense, you can just change it's *saturation*: `background-color: hsl(278 50% 50%);`
+- Otherwise, to make it darker, you can just change it's *light* value: `background-color: hsl(278 100% 35%);`
+- You can also follow it's secret value *alpha* to play with transparency: `background-color: hsl(278 100% 50% / 0.5);`  
+
+<br />
+
+Can you see the readability that your code can get from it? Looks good, right?  
+
+> 💾 __If your project offers support to IE9, consider using HSLa instead__
+> 
+> HSL is compatible with most browsers out there but the damn IE9.
+> In order to use HSL on it, you need to apply the following syntax:  
+> 
+>`background-color: hsla(278, 100%, 50%, 0.5)`.  
+>
+> The song remains the same for all the rest.
+
+From here to the moon, witchcraft like [dynamic themes with calc() and HSL](https://css-tricks.com/creating-color-themes-with-custom-properties-hsl-and-a-little-calc/) and even [change the color of some text following it's background](https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/) are easier to learn and cast.
+
+See you next time! 👋🏾
