@@ -8,13 +8,13 @@ featuredImage: ./social.jpg
 
 Can you tell, from the top of your head, which color is `#A200FF`? What about `rgba(0, 255, 39)`? If a button would receive a darker tone of this first HEX with some *:hover* effect, which HEX would you provide to reach that tone?  
 
-Now imagine that same button receiving a prop called *:disabled* by any external condition and being turned opaque because of that, how to apply something like that? By transforming the __HEX__ into some __RGBa__ in order to use it's transparency hability? So let's talk about HSL, it's gonna be a blast for you.  
+Now imagine that same button receiving a prop called *:disabled* by any external condition which may turn it opaque, which color should you use? By transforming the __HEX__ into some __RGBa__ in order to use it's transparency hability? If that's so, let's talk about HSL, it's gonna be a blast for you.  
 
 ## __HEX and RGB aren't intuitive at all__  
 
 Answering some of questions above, `#A200FF` stands for some purple tone, while `rgba(0, 255, 39)` is a clear green. To reach a brighter purple, you can use `#CA6EFF`, or even `#DDA1FF`. You can also use `#5A008C` to get a darker tone for that same purple.  
 
-But shouldn't be easier? I mean, we're just talking about light getting in and out over a color when it comes to have it brighter or darker tone. But to get things done with both __HEX__ and __RGB__ we need to update __all the values in there__, getting a totally new code just in order to change the color brightness.
+But shouldn't that be easier? I mean, we're just talking about light getting in and out over a color when it comes to have it brighter or darker. But to get things done with both __HEX__ and __RGB__ we need to update __all the values in there__, getting a totally new code just in order to change the color brightness.
 
 There's no clear relationship between `#A200FF`, `#DDA1FF` and `#5A008C`. Without any previous context, it's near impossible to say that they're just different tones of the same color.  
 
@@ -55,7 +55,7 @@ So, following the __HSL__ model, you just need to worry about the *Hue*, because
 
 <br />
 
-Can you see the readability that your code can get from it? Looks good, right?  
+Can you feel the readability improvement over there? Looks good, right?  
 
 > 💾 __If your project offers support to IE9, consider using HSLa instead__
 > 
