@@ -19,7 +19,6 @@ const SEO = ({ title, description, image, imageAlt, meta = [] }) => {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const imageUrl = `${site.siteMetadata.siteUrl}${image}`;
 
   return (
     <Helmet
@@ -50,25 +49,26 @@ const SEO = ({ title, description, image, imageAlt, meta = [] }) => {
         },
       ]}
       meta={[
-        { name: `description`, content: metaDescription },
+        { property: `author`, content: "dotpegaso" },
+        { property: `description`, content: metaDescription },
         { property: `og:title`, content: title },
         { property: `og:description`, content: metaDescription },
-        { property: `og:type`, content: "website" },
+        { property: `og:type`, content: "article" },
         { property: `twitter:title`, content: title },
         { property: `twitter:description`, content: metaDescription },
         {
           property: `twitter:creator`,
-          content: site.siteMetadata.twitter || ``,
+          content: site.siteMetadata.twitter || `dotpegaso`,
         },
         { property: `twitter:card`, content: "summary" },
       ]
         .concat(
           image
             ? [
-                { name: "og:image", content: `${imageUrl}` },
-                { name: "og:image:alt", content: imageAlt || title },
-                { name: "twitter:image", content: imageUrl },
-                { name: "twitter:image:alt", content: imageAlt || title },
+                { property: "og:image", content: image },
+                { property: "og:image:alt", content: imageAlt || title },
+                { property: "twitter:image", content: image },
+                { property: "twitter:image:alt", content: imageAlt || title },
                 { property: `twitter:card`, content: "summary_large_image" },
               ]
             : [{ property: `twitter:card`, content: "summary" }]
