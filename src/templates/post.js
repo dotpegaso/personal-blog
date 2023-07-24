@@ -15,7 +15,6 @@ const Post = ({ data: { mdx } }) => (
     <PostContent
       title={mdx.frontmatter.title}
       author={mdx.frontmatter.author}
-      date={mdx.frontmatter.date}
       body={mdx.body}
     />
   </>
@@ -31,7 +30,6 @@ export const query = graphql`
     ) {
       frontmatter {
         title
-        date
         author
         spoiler
         featuredImage {

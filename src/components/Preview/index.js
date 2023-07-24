@@ -17,7 +17,6 @@ const Preview = ({ title, spoiler, path }) => {
 };
 
 Preview.propTypes = {
-  date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   spoiler: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,

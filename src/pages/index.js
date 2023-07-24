@@ -16,7 +16,6 @@ const Home = ({ data }) => {
       {posts.edges.map(({ node: post }) => (
         <Preview
           key={post.frontmatter.title}
-          date={post.frontmatter.date}
           title={post.frontmatter.title}
           spoiler={post.frontmatter.spoiler}
           path={post.parent.relativeDirectory}
@@ -36,7 +35,6 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            date
             spoiler
           }
           fields {
