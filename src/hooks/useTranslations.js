@@ -4,12 +4,10 @@ import { useStaticQuery, graphql } from "gatsby";
 import { LayoutContext } from "../components/Layout";
 
 const useTranslations = () => {
-  // Grab the locale (passed through context) from the Context Provider
   const { locale } = useContext(LayoutContext);
   // Query the JSON files in <rootDir>/i18n/translations
   const { rawData } = useStaticQuery(query);
 
-  // // Simplify the response from GraphQL
   const simplified = rawData.edges.map((item) => {
     return {
       name: item.node.name,
@@ -17,7 +15,6 @@ const useTranslations = () => {
     };
   });
 
-  // // Only return translations for the current locale
   const result = simplified.filter((lang) => lang.name === locale)[0];
 
   return _.get(result, "translations", []);
@@ -40,6 +37,7 @@ const query = graphql`
             newsletter_description
             newsletter_confirmation_title
             newsletter_confirmation_description
+            written_by
           }
         }
       }

@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-
 import Timestamp from "../Timestamp";
 import SubscribeForm from "../SubscribeForm";
+
+import { useTranslations } from "../../hooks";
 
 import * as S from "./styles";
 
 const PostContent = ({ title, body, author }) => {
   deckDeckGoHighlightElement();
+  const { written_by } = useTranslations();
 
   return (
     <S.Container>
@@ -28,7 +30,7 @@ const PostContent = ({ title, body, author }) => {
           h2: (props) => <S.Header2 {...props} />,
         }}
       >
-        <Timestamp>{`By ${author}`}</Timestamp>
+        <Timestamp>{`${written_by} ${author}`}</Timestamp>
         <S.Title>{title}</S.Title>
         <S.Body>
           <MDXRenderer>{body}</MDXRenderer>
